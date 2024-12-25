@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card welcome-banner bg-blue-800">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="p-4">
+                            <h2 class="text-white">Hi {{ request.user.first_name }},</h2>
+                            <h3 class="text-white">Welcome to your dashboard</h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <div class="img-welcome-banner">
+                            <img src="{% static 'assets/images/widget/welcome-banner.png' %}" alt="img" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
