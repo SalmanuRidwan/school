@@ -46,21 +46,21 @@ class Course(models.Model):
     
 
 class AcademicRecord(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='academic_records')
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='students')
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     semester = models.CharField(max_length=50, choices=SEMESTER_CHOICES)
     year = models.IntegerField()
     grade = models.CharField(max_length=1)
 
     def __str__(self):
-        return f'{self.student} - {self.course} ({self.semester} {self.year})'
+        return f'{self.student.user.first_name} {self.student.user.last_name} - {self.course} ({self.semester} {self.year})'
 
 
 class Staff(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20)
     address = models.TextField()
-    hire_date = models.DateField()
+    hire_date = models.DateField(auto_now_add=True)
     department = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Courses{% endblock title %}
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+       <div class="card table-card">
+          <div class="card-header">
+             <div class="d-sm-flex align-items-center justify-content-between">
+                <h5 class="mb-3 mb-sm-0">Course List</h5>
+                <div> <a href="{% url 'course_create' %}" class="btn btn-primary">Add Course</a></div>
+             </div>
+          </div>
+          <div class="card-body pt-3">
+             <div class="table-responsive">
+                <table class="table table-hover" id="pc-dt-simple">
+                   <thead>
+                      <tr>
+                         <th>Code</th>
+                         <th>Name</th>
+                         <th>Credits</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                     {% for course in courses %}
+                     <tr>
+                         <td>{{ course.code }}</td>
+                         <td>{{ course.name }}</td>
+                         <td>{{ course.credits }}</td>
+                      </tr>
+                     {% endfor %}
+                   </tbody>
+                </table>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+{% endblock %}

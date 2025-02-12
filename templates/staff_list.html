@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Staffs{% endblock title %}
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+       <div class="card table-card">
+          <div class="card-header">
+             <div class="d-sm-flex align-items-center justify-content-between">
+                <h5 class="mb-3 mb-sm-0">Staff list</h5>
+                <div> <a href="{% url 'staff_create' %}" class="btn btn-primary">Add Staff</a></div>
+             </div>
+          </div>
+          <div class="card-body pt-3">
+             <div class="table-responsive">
+                <table class="table table-hover" id="pc-dt-simple">
+                   <thead>
+                      <tr>
+                         <th>Name</th>
+                         <th>Departments</th>
+                         <th>Phone</th>
+                         <th>Joining Date</th>
+                         <th>Action</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                     {% for staff in staff_members %}
+                     <tr>
+                         <td>
+                            <div class="d-flex align-items-center">
+                               <div class="flex-shrink-0"><img src="{% static 'assets/images/user/avatar-2.jpg' %}" alt="user image" class="img-radius wid-40"></div>
+                               <div class="flex-grow-1 ms-3">
+                                  <h6 class="mb-0"><a href="{% url 'staff_detail' staff.pk %}">{{ staff.user.first_name }} {{ staff.user.last_name }}</a></h6>
+                               </div>
+                            </div>
+                         </td>
+                         <td>{{ staff.department }}</td>
+                         <td>{{ staff.phone_number }}</td>
+                         <td>{{ staff.hire_date }}</td>
+                         <td><a href="#" class="avtar avtar-xs btn-link-secondary"><i class="ti ti-eye f-20"></i> </a><a href="{% url 'staff_update' staff.pk %}" class="avtar avtar-xs btn-link-secondary"><i class="ti ti-edit f-20"></i> </a><a href="{% url 'staff_delete' staff.pk %}" class="avtar avtar-xs btn-link-secondary"><i class="ti ti-trash f-20"></i></a></td>
+                      </tr>
+                        {% endfor %}
+                   </tbody>
+                </table>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+{% endblock %}

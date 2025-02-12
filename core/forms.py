@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import password_validation, get_user_model
 from django.utils.translation import gettext_lazy as _
+from .models import Student, Staff, Course, AcademicRecord
 
 
 User = get_user_model()
@@ -52,3 +53,24 @@ class CustomUserCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + \
             ('first_name', 'last_name', 'username', 'email',
              'password1', 'password2',)
+        
+
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['user', 'registration_number', 'dob', 'gender', 'phone_number', 'address', 'admission_date', 'status']
+
+class StaffForm(forms.ModelForm):
+    class Meta:
+        model = Staff
+        fields = ['user', 'phone_number', 'address', 'department']
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ['code', 'name', 'credits']
+
+class AcademicRecordForm(forms.ModelForm):
+    class Meta:
+        model = AcademicRecord
+        fields = ['student', 'course', 'semester', 'year', 'grade']

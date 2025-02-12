@@ -1,0 +1,9 @@
+{% block content %}
+  <h2>{{ staff.user.first_name }} {{ staff.user.last_name }}</h2>
+  <p>Phone: {{ staff.phone_number }}</p>
+  <p>Address: {{ staff.address }}</p>
+  <p>Hire Date: {{ staff.hire_date }}</p>
+  <p>Department: {{ staff.department }}</p>
+  <a href="{% url 'staff_update' staff.pk %}">Edit</a>
+  <a href="{% url 'staff_list' %}">Back to list</a>
+{% endblock %}

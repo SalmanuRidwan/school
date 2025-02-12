@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}students{% endblock title %}
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+       <div class="card table-card">
+          <div class="card-header">
+             <div class="d-sm-flex align-items-center justify-content-between">
+                <h5 class="mb-3 mb-sm-0">student list</h5>
+                <div> <a href="{% url 'student_create' %}" class="btn btn-primary">Add Student</a></div>
+             </div>
+          </div>
+          <div class="card-body pt-3">
+             <div class="table-responsive">
+                <table class="table table-hover" id="pc-dt-simple">
+                   <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Registration Number</th>
+                        <th>Gender</th>
+                        <th>Date of Birth</th>
+                        <th>Academic Record</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                    {% for student in students %}
+                     <tr>
+                         <td>
+                            <div class="d-flex align-items-center">
+                               <div class="flex-shrink-0"><img src="{% static 'assets/images/user/avatar-2.jpg' %}" alt="user image" class="img-radius wid-40"></div>
+                               <div class="flex-grow-1 ms-3">
+                                  <h6 class="mb-0"><a href="{% url 'student_detail' student.pk %}">{{ student.user.first_name }} {{ student.user.last_name }}</a></h6>
+                               </div>
+                            </div>
+                         </td>
+                         <td>{{ student.registration_number }}</td>
+                         <td>{{ student.gender }}</td>
+                         <td>{{ student.dob }}</td>
+                         <td><a href="{% url 'update_student_grades' student.pk %}" class="avtar avtar-xs btn-link-secondary"><i class="ti ti-edit f-20"></i> </a></td>
+                      </tr>
+                        {% endfor %}
+                   </tbody>
+                </table>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+{% endblock %}

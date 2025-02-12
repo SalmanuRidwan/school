@@ -1,0 +1,9 @@
+{% block content %}
+  <h2>Delete Staff</h2>
+  <p>Are you sure you want to delete {{ staff.user.first_name }} {{ staff.user.last_name }}?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+  </form>
+  <a href="{% url 'staff_list' %}">Cancel</a>
+{% endblock %}
