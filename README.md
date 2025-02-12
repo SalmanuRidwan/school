@@ -70,3 +70,24 @@ If you created a superuser account earlier, you can access the Django admin inte
 ```arduino
 http://127.0.0.1:8000/admin/
 ```
+# Project Workaround
+
+### Dashboard
+
+![Dashboard](static/assets/images/workaround/dashboard.png)
+
+### Staffs
+
+![Dashboard](static/assets/images/workaround/staff.png)
+
+### Courses
+
+![Dashboard](static/assets/images/workaround/course.png)
+
+### Students
+
+![Dashboard](static/assets/images/workaround/student.png)
+
+### Academic Records
+
+![Dashboard](static/assets/images/workaround/record.png)
